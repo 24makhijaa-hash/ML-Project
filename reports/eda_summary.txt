@@ -1,0 +1,113 @@
+================================================================================
+CREDIT CARD FRAUD DETECTION - STAGE 1 EXPLORATORY DATA ANALYSIS (EDA)
+Author: Anish (Stage 1 Lead)
+================================================================================
+
+[1] DATASET SHAPE:
+Dataset Shape: 100,000 rows, 23 columns
+
+[2] FIRST 5 ROWS (head()):
+   Unnamed: 0 trans_date_trans_time            cc_num                            merchant       category     amt      first     last gender                        street            city state    zip      lat      long  city_pop                                job         dob                         trans_num   unix_time  merch_lat  merch_long  is_fraud
+0           0   2019-01-01 00:00:18  2703186189652095          fraud_Rippin, Kub and Mann       misc_net    4.97   Jennifer    Banks      F                561 Perry Cove  Moravian Falls    NC  28654  36.0788  -81.1781      3495          Psychologist, counselling  1988-03-09  0b242abb623afc578575680df30655b9  1325376018  36.011293  -82.048315         0
+1           1   2019-01-01 00:00:44      630423337322     fraud_Heller, Gutmann and Zieme    grocery_pos  107.23  Stephanie     Gill      F  43039 Riley Greens Suite 393          Orient    WA  99160  48.8878 -118.2105       149  Special educational needs teacher  1978-06-21  1f76529f8574734946361c461b024d99  1325376044  49.159047 -118.186462         0
+2           2   2019-01-01 00:00:51    38859492057661                fraud_Lind-Buckridge  entertainment  220.11     Edward  Sanchez      M      594 White Dale Suite 530      Malad City    ID  83252  42.1808 -112.2620      4154        Nature conservation officer  1962-01-19  a1a22d70485983eac12b5b88dad1cf95  1325376051  43.150704 -112.154481         0
+3           3   2019-01-01 00:01:16  3534093764340240  fraud_Kutch, Hermiston and Farrell  gas_transport   45.00     Jeremy    White      M   9443 Cynthia Court Apt. 038         Boulder    MT  59632  46.2306 -112.1138      1939                    Patent attorney  1967-01-12  6b849c168bdad6f867558c3793159a81  1325376076  47.034331 -112.561071         0
+4           4   2019-01-01 00:03:06   375534208663984                 fraud_Keeling-Crist       misc_pos   41.96      Tyler   Garcia      M              408 Bradley Rest        Doe Hill    VA  24433  38.4207  -79.4629        99     Dance movement psychotherapist  1986-03-28  a41d7549acf90789359a9aa5346dcb46  1325376186  38.674999  -78.632459         0
+
+[3] LAST 5 ROWS (tail()):
+       Unnamed: 0 trans_date_trans_time               cc_num                        merchant        category    amt    first    last gender                           street            city state    zip      lat      long  city_pop                      job         dob                         trans_num   unix_time  merch_lat  merch_long  is_fraud
+99995       99995   2019-02-28 15:36:49     2475085306462014  fraud_O'Reilly, Mohr and Purdy            home  95.14     John  Miller      M  153 Mccullough Springs Apt. 857       Lamberton    MN  56152  44.2378  -95.2739      1507  Land/geomatics surveyor  1993-10-12  085e8f89f41378f4bd21ed8a59065fee  1330443409  44.718105  -95.843397         0
+99996       99996   2019-02-28 15:37:27     4005676619255478                   fraud_Kub PLC   personal_care   8.75  William   Perry      M     458 Phillips Island Apt. 768  Denham Springs    LA  70726  30.4590  -90.9027     71335                Herbalist  1994-05-31  9988dd4de1bb2182a7b3ec5f1ede1e34  1330443447  29.931844  -90.610715         0
+99997       99997   2019-02-28 15:37:34     3519232971341141           fraud_Schuppe-Schuppe     food_dining  34.20  Michael   Jones      M                   754 Smith Isle       Amsterdam    OH  43903  40.4731  -80.9596      2208      Mental health nurse  1961-09-10  70151fb544afe365dc163889d67f5be6  1330443454  41.076153  -80.506107         0
+99998       99998   2019-02-28 15:38:11  4040099974063068803          fraud_Rippin-VonRueden  health_fitness  73.11  Jeffrey   Lewis      M               24255 Bryan Square         Palermo    ND  58769  48.3396 -102.2400       229            Administrator  1983-03-20  bc2adb0fad8f733cdc21ebefcc79ddf3  1330443491  48.535070 -102.524262         0
+99999       99999   2019-02-28 15:40:20     6595970453799027             fraud_Kessler Group          travel   9.08     Gina   Gomez      F  72030 Shelton Crossing Apt. 742        Stirling    NJ   7980  40.6774  -74.4968      2307           Science writer  1969-09-11  fd4a6a1b893c2045d7310c70c1d9ea1f  1330443620  39.718206  -73.627417         0
+
+[4] DATASET INFO (info()):
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 100000 entries, 0 to 99999
+Data columns (total 23 columns):
+ #   Column                 Non-Null Count   Dtype  
+---  ------                 --------------   -----  
+ 0   Unnamed: 0             100000 non-null  int64  
+ 1   trans_date_trans_time  100000 non-null  object 
+ 2   cc_num                 100000 non-null  int64  
+ 3   merchant               100000 non-null  object 
+ 4   category               100000 non-null  object 
+ 5   amt                    100000 non-null  float64
+ 6   first                  100000 non-null  object 
+ 7   last                   100000 non-null  object 
+ 8   gender                 100000 non-null  object 
+ 9   street                 100000 non-null  object 
+ 10  city                   100000 non-null  object 
+ 11  state                  100000 non-null  object 
+ 12  zip                    100000 non-null  int64  
+ 13  lat                    100000 non-null  float64
+ 14  long                   100000 non-null  float64
+ 15  city_pop               100000 non-null  int64  
+ 16  job                    100000 non-null  object 
+ 17  dob                    100000 non-null  object 
+ 18  trans_num              100000 non-null  object 
+ 19  unix_time              100000 non-null  int64  
+ 20  merch_lat              100000 non-null  float64
+ 21  merch_long             100000 non-null  float64
+ 22  is_fraud               100000 non-null  int64  
+dtypes: float64(5), int64(6), object(12)
+memory usage: 17.5+ MB
+
+
+[5] NUMERICAL SUMMARY STATISTICS (describe()):
+          Unnamed: 0        cc_num            amt            zip            lat           long      city_pop     unix_time      merch_lat     merch_long       is_fraud
+count  100000.000000  1.000000e+05  100000.000000  100000.000000  100000.000000  100000.000000  1.000000e+05  1.000000e+05  100000.000000  100000.000000  100000.000000
+mean    49999.500000  4.183992e+17      71.908232   48720.506960      38.538809     -90.179763  8.918773e+04  1.327916e+09      38.539719     -90.180833       0.009900
+std     28867.657797  1.309964e+18     145.895400   26895.490176       5.077738      13.771942  3.015788e+05  1.459296e+06       5.110508      13.783471       0.099005
+min         0.000000  6.041621e+10       1.000000    1257.000000      20.027100    -165.672300  2.300000e+01  1.325376e+09      19.029798    -166.670132       0.000000
+25%     24999.750000  1.800365e+14       9.710000   26041.000000      34.668900     -96.790900  7.430000e+02  1.326627e+09      34.750439     -96.867861       0.000000
+50%     49999.500000  3.519607e+15      48.150000   48174.000000      39.354300     -87.458100  2.456000e+03  1.327877e+09      39.365135     -87.407044       0.000000
+75%     74999.250000  4.642255e+15      83.870000   72011.000000      41.894800     -80.128400  2.047800e+04  1.329150e+09      41.943393     -80.180297       0.000000
+max     99999.000000  4.992346e+18   12788.070000   99783.000000      65.689900     -67.950300  2.906700e+06  1.330444e+09      66.659242     -66.967742       1.000000
+
+[6] CATEGORICAL SUMMARY STATISTICS (describe(include=['O'])):
+       trans_date_trans_time           merchant       category        first    last  gender                    street     city   state                  job         dob                         trans_num
+count                 100000             100000         100000       100000  100000  100000                    100000   100000  100000               100000      100000                            100000
+unique                 98825                693             14          341     470       2                       922      848      50                  479         908                            100000
+top      2019-01-22 03:23:10  fraud_Kilback LLC  gas_transport  Christopher   Smith       F  11014 Chad Lake Apt. 573  Phoenix      TX  Exhibition designer  1977-03-23  0b242abb623afc578575680df30655b9
+freq                       3                317          10221         2080    2176   54641                       276      420    7345                  738         426                                 1
+
+[7] MISSING VALUES AUDIT:
+                       Missing_Count  Percentage
+Unnamed: 0                         0         0.0
+trans_date_trans_time              0         0.0
+cc_num                             0         0.0
+merchant                           0         0.0
+category                           0         0.0
+amt                                0         0.0
+first                              0         0.0
+last                               0         0.0
+gender                             0         0.0
+street                             0         0.0
+city                               0         0.0
+state                              0         0.0
+zip                                0         0.0
+lat                                0         0.0
+long                               0         0.0
+city_pop                           0         0.0
+job                                0         0.0
+dob                                0         0.0
+trans_num                          0         0.0
+unix_time                          0         0.0
+merch_lat                          0         0.0
+merch_long                         0         0.0
+is_fraud                           0         0.0
+
+[8] DUPLICATE ROWS AUDIT:
+Full duplicate rows: 0
+Duplicate transaction IDs ('trans_num'): 0
+
+[9] CLASS IMBALANCE AUDIT (Target: 'is_fraud'):
+Legitimate Transactions (0): 99,010 (99.0100%)
+Fraudulent Transactions (1): 990 (0.9900%)
+Imbalance Ratio: 1 fraud per 100.0 legitimate transactions (~100:1)
+
+[10] OUTLIER AUDIT (IQR METHOD):
+- Feature 'amt': Median=48.15, IQR=74.16, Upper Bound=195.11, Outliers=5,367 (5.37%), Max=12788.07
+- Feature 'city_pop': Median=2456.00, IQR=19735.00, Upper Bound=50080.50, Outliers=18,857 (18.86%), Max=2906700.00
